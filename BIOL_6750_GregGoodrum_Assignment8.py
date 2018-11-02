@@ -1,3 +1,11 @@
+# Author: Greg Goodrum
+# Course: BIOL 6750 with Dr. Will Pearse
+# Section: 8 - Introduction to Python
+# Exercise 8
+# ----------------
+
+
+# ---- Question 1 ----
 # 1(a) Write a loop that prints out the numbers from 20 to 10
 # range(start value, end value, step interval)
 for i in (range(20, 9, -1)):
@@ -10,8 +18,7 @@ descending_comprehension = [print(each) for each in range(20,9,-1)]
 print("End: 1(b)")
 
 
-
-
+# ---- Question 2 -----
 # 2(a) Write a loop that prints out only the numbers from 20 to 10 that are even
 for i in (range(20,9,-2)):
     print(i)
@@ -32,7 +39,7 @@ even_descending_comprehension_remainder = [print(each) for each in range(20,9,-1
 print("End: 2(b)")
 
 
-
+# ---- Question 3 ----
 # 3 Write a function that calculates whether a number is a prime number
 def check_prime(x):
     if x%2 == 0:
@@ -46,6 +53,7 @@ check_prime(13)
 print("End: 3")
 
 
+# ---- Question 4 ----
 # 4 Write a function that calculates population size at any time for any values of it's parameters
 # Gompertz curve: y(t) = a.e^(-b.e^(-c.t))
 # y = population size, t = time, a, b, and c = parameters, e = exponential function
@@ -60,7 +68,7 @@ gompertz_funct(10.0, 5.0, 3.0, 7.0)
 print("End: 4")
 
 
-
+# ---- Question 5 ----
 # 5(a) Implement a point class that holds x and y information for a point in space.
 
 class Point:
@@ -120,6 +128,7 @@ print(distance_line(Line1))
 print("End: 5(c)")
 
 
+# ---- Question 6 ----
 # 6. Write a function that loads a text file, loops over the lines in it, and prints out the fifth
 # character on the fifth line of that file.
 # Hint:
@@ -149,6 +158,6 @@ def fifthchar_fifthline(filepath):
 
 
 # Test code for checking success of function
-fifthchar_fifthline("/Users/gregorygoodrum/USU/Coursework/Programming for Biologist (BIOL 6750)/Extra/TextFile_for_Python1.txt")
+#fifthchar_fifthline("/Users/gregorygoodrum/USU/Coursework/Programming for Biologist (BIOL 6750)/Extra/TextFile_for_Python1.txt")
 
 print("End: 6")
