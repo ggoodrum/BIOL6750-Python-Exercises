@@ -26,7 +26,7 @@ testlist = [5,7,2,10,4,7,9,1]
 def bubblesort(list):
     # For every value in the list
     for i in range(len(list)-1):
-        # Compare each value from previous clause to every value in the list
+        # Compare each value from previous clause to each remaining value in the list.
         for j in range(len(list)-1-i):
             # If the current value is greater than the next value
             if list[j] > list[j+1]:
@@ -45,22 +45,29 @@ print(bubblesort([5,7,2,10,4,7,9,1]))
 # ---- QuickSort ----
 # determine syntax to define each input (list, bottom, top)
 testlist = [5,7,2,10,4,7,9,1]
-value_bottom=testlist[0]
+value_bottom = testlist[0]
 value_top=testlist[-1]
 index_top = len(testlist)-1
-index_bottom = testlist[0]
+index_bottom = 0
 
 
 # For every pass, the pivot is going to segment the list into what has been sorted and what hasn't
 # Partition each time only needs to return the list 'below' the pivot point for the next iteration?
-def PARTITION(list, bottom, top):
-    pivot = list[top]
-    x = bottom
-    for i in bottom-(top-1):
-        if list[i] < pivot:
-            SWAP(list[i], list[x])
+def PARTITION(list):
+    # Set pivot as teh value of the last element in the list
+    pivot = list[-1]
+    # Set bottom as the first index position in the list
+    x = 0
+    # For ever index position from beginning to the last position before the pivot (len(list)-2)
+    for i in range(len(list)-2):
+        # If the current value is less than or equal to the pivot
+        if list[i] <= pivot:
+            # Swap the current value to the bottom position
+            list[i], list[x] = list[x], list[i]
+            # Once the swap occurs, change the bottom position one index to the right so the value is locked in the less than section
             x = x+1
-        end if
+        # Next Step: Once everything has been sorted, switch the pivot to the bottom+1 position
+        else:
     end for
     return x
 end function
@@ -68,7 +75,7 @@ end function
 
 
 # ---- Conditions from Source Material ----
-def quicksortfunction(list, bottom,top):
+def quicksortfunction(list, bottom, top):
     if bottom < top:
         pivot = PARTITION(list,bottom,top)
         quicksortfunction(list, bottom, pivot-1)
