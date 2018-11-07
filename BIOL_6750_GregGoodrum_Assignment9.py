@@ -54,6 +54,82 @@ index_bottom = 0
 # For every pass, the pivot is going to segment the list into what has been sorted and what hasn't
 # Partition returns a single value, the index in the list of the sorted pivot point
 # Then, when quicksort calls itself, it uses the returned pivot point to split the list into sections
+def PARTITION(list, bottom, top):
+    # Set pivot as the value of the last element in the list
+    pivot = list[top]
+    # Set bottom as the first index position in the list
+    x = bottom
+    # For ever index position from beginning to the last position before the pivot (len(list)-2)
+    for i in range(len(list)-1):
+        # If the current value is less than or equal to the pivot
+        if list[i] <= pivot:
+            # Swap the current value to the bottom position
+            list[i], list[x] = list[x], list[i]
+            # Once the swap occurs, change the bottom position one index to the right so the value is locked in the less than section
+            x = x+1
+        # Next Step: Once everything has been sorted, switch the pivot to the bottom+1 position
+        # end if
+    # end for
+    # Swap the pivot value from the end position the the value to the right of the last minimum value (list[x])
+    list[len(list)-1], list[x] = list[x], list[len(list)-1]
+    #Print index and alterations to list to verify results
+    print(x)
+    print(list)
+    # Return x as the index of the pivot point in the re-ordered list.
+    return x
+#end function
+testlist = [5,7,2,10,4,7,9,1,6]
+PARTITION(testlist, 0, len(testlist)-1)
+
+
+def quicksortfunction(list, bottom, top):
+    # I will add the PARTITION function defined above once I have figured out the edge condition here
+    # If index of bottom < index of top (i.e. if the list is larger than one value)
+    if bottom < top:
+        # Assign Pivot the index value returned in the PARTITION function
+        pivot = PARTITION(list)
+        # Call Quicksort on the section of list between the bottom value and the pivot
+        quicksortfunction(list, bottom, pivot-1)
+        # Call Quicksort on the section of list between the pivot and the top value
+        quicksort(list, pivot+1, top)
+    # Is this where the edge condition goes?
+    if bottom >= top:
+        # Not sure what to do here?
+    end if
+end function
+
+
+# ---- Conditions from Source Material ----
+def quicksortfunction(list, bottom, top):
+    # Edge condition?
+    if bottom < top:
+        pivot = PARTITION(list,bottom,top)
+        quicksortfunction(list, bottom, pivot-1)
+        quicksort(list, pivot+1, top)
+    end if
+end function
+
+
+def PARTITION(list, bottom, top):
+    pivot = list[top]
+    x = bottom
+    for i in bottom-(top-1):
+        if list[i] < pivot:
+            SWAP(list[i], list[x])
+            x = x+1
+        end if
+    end for
+    return x
+end function
+# ---- END Source Material ----
+
+
+# ---- START PARTITION function with only list input ----
+# This was my first functional version of partition, but
+# I didn't realize how the bottom and top values interacted
+# with the QuickSort function, so the complete version is
+# above.
+
 def PARTITION(list):
     # Set pivot as the value of the last element in the list
     pivot = list[-1]
@@ -68,39 +144,14 @@ def PARTITION(list):
             # Once the swap occurs, change the bottom position one index to the right so the value is locked in the less than section
             x = x+1
         # Next Step: Once everything has been sorted, switch the pivot to the bottom+1 position
-        # end if:
-    # end for:
+        # end if
+    # end for
     # Swap the pivot value from the end position the the value to the right of the last minimum value (list[x])
     list[len(list)-1], list[x] = list[x], list[len(list)-1]
+    #Print index and alterations to list to verify results
     print(x)
     print(list)
-    return x, list
-#end function
-PARTITION([1,9,2,8,3,7,4,6])
-
-
-
-# ---- Conditions from Source Material ----
-def quicksortfunction(list, bottom, top):
-    if bottom < top:
-        pivot = PARTITION(list,bottom,top)
-        quicksortfunction(list, bottom, pivot-1)
-        quicksort(list, pivot+1, top)
-    #Edge condition here?
-    end if
-end function
-
-
-def PARTITION(list, bottom,top):
-    pivot = list[top]
-    x = bottom
-    for i in bottom-(top-1):
-        if list[i] < pivot:
-            SWAP(list[i], list[x])
-            x = x+1
-        #Edge condition?
-        end if
-    end for
+    # Return x as the index of the pivot point in the re-ordered list.
     return x
-end function
-# ---- END Source Material ----
+#end function
+PARTITION([5,7,2,10,4,7,9,1,6])
