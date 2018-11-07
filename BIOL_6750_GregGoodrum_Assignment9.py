@@ -44,22 +44,23 @@ print(bubblesort([5,7,2,10,4,7,9,1]))
 
 # ---- QuickSort ----
 # determine syntax to define each input (list, bottom, top)
-testlist = [5,7,2,10,4,7,9,1]
+testlist = [5,7,2,10,4,7,9,1,6]
 value_bottom = testlist[0]
 value_top=testlist[-1]
-index_top = len(testlist)-1
+index_top = len(list)-1
 index_bottom = 0
 
 
 # For every pass, the pivot is going to segment the list into what has been sorted and what hasn't
-# Partition each time only needs to return the list 'below' the pivot point for the next iteration?
+# Partition returns a single value, the index in the list of the sorted pivot point
+# Then, when quicksort calls itself, it uses the returned pivot point to split the list into sections
 def PARTITION(list):
-    # Set pivot as teh value of the last element in the list
+    # Set pivot as the value of the last element in the list
     pivot = list[-1]
     # Set bottom as the first index position in the list
     x = 0
     # For ever index position from beginning to the last position before the pivot (len(list)-2)
-    for i in range(len(list)-2):
+    for i in range(len(list)-1):
         # If the current value is less than or equal to the pivot
         if list[i] <= pivot:
             # Swap the current value to the bottom position
@@ -67,10 +68,15 @@ def PARTITION(list):
             # Once the swap occurs, change the bottom position one index to the right so the value is locked in the less than section
             x = x+1
         # Next Step: Once everything has been sorted, switch the pivot to the bottom+1 position
-        else:
-    end for
-    return x
-end function
+        # end if:
+    # end for:
+    # Swap the pivot value from the end position the the value to the right of the last minimum value (list[x])
+    list[len(list)-1], list[x] = list[x], list[len(list)-1]
+    print(x)
+    print(list)
+    return x, list
+#end function
+PARTITION([1,9,2,8,3,7,4,6])
 
 
 
