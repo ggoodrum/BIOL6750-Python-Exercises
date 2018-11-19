@@ -48,6 +48,7 @@ def Bisection(interval_min, interval_max, tol):
             else:
                 interval_min = interval_mid
         # Once f(x) is within the range, return x as the solution
+        print('Finished Bisection, the answer is ' + str(interval_mid))
         return interval_mid
 
 
@@ -65,7 +66,7 @@ def f(x):
 def NewtonRaphson(x, tol):
     # While f(x) is greater than the tolerance value, run the following loop
     while f(x) > tol:
-
+        # If the function results in 0.0, then return that value
         if f(x) == 0:
             return x
         else:
@@ -83,11 +84,11 @@ def NewtonRaphson(x, tol):
             x = tan_x_intercept
             # Print included as a check for how the loop is functioning
             # print(x)
-    print('Finished, the solution is ' + str(x))
+    print('Finished Newton-Raphson, the solution is ' + str(x))
     return(x)
 
 
-NewtonRaphson(15, 0.001)
+NewtonRaphson(20, 0.001)
 
 
 # ---- Author reference material ----
