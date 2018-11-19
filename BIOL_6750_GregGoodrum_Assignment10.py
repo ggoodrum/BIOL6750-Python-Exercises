@@ -111,4 +111,4 @@ def Bisection(a, b, tol):
         return(midpoint)
 
 
-Bisection(-7,50,.0001)
+Bisection(-7, 50, .0001)

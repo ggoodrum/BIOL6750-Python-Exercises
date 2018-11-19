@@ -158,6 +158,8 @@ def fifthchar_fifthline(filepath):
 
 
 # Test code for checking success of function
+# I have included a copy of the text file used for this example in my GitHub repository as 'TextFile_for_Assignment8_Q5'
 #fifthchar_fifthline("/Users/gregorygoodrum/USU/Coursework/Programming for Biologist (BIOL 6750)/Extra/TextFile_for_Python1.txt")
 
 print("End: 6")
+print('---- END: Exercise 8 ----')
